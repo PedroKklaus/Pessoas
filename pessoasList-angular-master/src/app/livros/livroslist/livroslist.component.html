@@ -1,0 +1,53 @@
+
+<h1>Lista de Livros</h1>
+<button (click)="abrirModal(abc)" type="button" class="btn btn-success">Adicionar</button>
+<table class="table caption-top">
+    <thead>
+      <tr >
+        <th scope="col">Título</th>
+        <th scope="col">Autor</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let livro of lista">
+        <td>{{livro.nome}}</td>
+        <td>{{livro.autor}}</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <ng-template #abc let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title">Cadastrar novo livro</h4>
+      <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+    </div>
+    <div class="modal-body">
+          <app-livrosdetails (retorno)="listAdd($event)" ></app-livrosdetails>        
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-light" (click)="modal.close('Close click')">Close</button>
+    </div>
+  </ng-template>
+
+
+  <style>
+    h1 {
+      display: flex;
+      text-decoration: underline;
+      justify-content: center;
+
+      padding-bottom: 20px;
+    }
+
+    table {
+      border: 0.1px solid rgba(0, 0, 0, 0.212);
+      width: 50%;
+      margin-left: 400px;
+    }
+
+    .btn {
+      margin-left: 400px;
+      margin-bottom: 20px;
+    }
+  </style>
+
